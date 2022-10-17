@@ -11,5 +11,13 @@ public:
 
 	virtual void Tick() override;
 	bool PredictCanMove();
+
+	virtual void Render() override;
+
+	int SpriteXIndex = 0;
+	int SpriteYIndex = 0;
+
+	Uint64 ElapsedTime;
+	Uint64 ExecuteTime;
 };
  

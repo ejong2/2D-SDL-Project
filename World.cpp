@@ -19,7 +19,6 @@ FWorld::~FWorld()
 	ActorList.clear();
 }
 
-
 void FWorld::SpawnActor(AActor* NewActor)
 {
 	if (NewActor)

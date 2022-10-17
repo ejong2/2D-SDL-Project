@@ -8,7 +8,7 @@
 #include "Floor.h"
 #include "Wall.h"
 #include "Goal.h"
-
+#include "Enemy.h"
 
 using namespace std;
 
@@ -32,6 +32,7 @@ void Engine::SDLInit()
 
 	MyWindow = SDL_CreateWindow("MyGame", 100, 100, 600, 600, SDL_WINDOW_VULKAN);
 	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+	//MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_SOFTWARE | SDL_RENDERER_TARGETTEXTURE);
 }
 
 void Engine::SDLTerm()
@@ -65,8 +66,10 @@ void Engine::Run()
 
 	while (bIsRunning)
 	{
+		DeltaSeconds = SDL_GetTicks64() - LastTick;
 		Input();
 		Tick();
+		LastTick = SDL_GetTicks64();
 		Render();
 	}
 
@@ -105,6 +108,11 @@ void Engine::Load(string MapFilename)
 			}
 			else if (Data[X] == ' ')
 			{
+				MyWorld->SpawnActor(new AFloor(X, Y));
+			}
+			else if (Data[X] == 'M')
+			{
+				MyWorld->SpawnActor(new AEnemy(X, Y));
 				MyWorld->SpawnActor(new AFloor(X, Y));
 			}
 		}
@@ -152,12 +160,13 @@ void Engine::Tick()
 	}
 
 	MyWorld->Tick();
+	SDL_Log("%d", DeltaSeconds);
 }
 
 void Engine::Render()
 {
 	//system("cls");
-	SDL_Color BackgroundColor = { 0xff, 0, 0 ,0 };
+	SDL_Color BackgroundColor = { 0, 0, 0 ,0 };
 
 	SDL_SetRenderDrawColor(MyRenderer, BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a);
 	SDL_RenderClear(MyRenderer);

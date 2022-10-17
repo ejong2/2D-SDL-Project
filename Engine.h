@@ -6,7 +6,6 @@
 #pragma comment(lib, "SDL2main.lib")
 #pragma comment(lib, "SDL2.lib")
 
-
 using namespace std;
 
 class FWorld;
@@ -45,6 +44,11 @@ public:
 	SDL_Renderer* MyRenderer;
 	SDL_Event MyEvent;
 
+	inline const Uint64 GetWorldDeltaSeconds()
+	{
+		return DeltaSeconds;
+	}
+
 protected:
 
 	virtual void Input();
@@ -60,4 +64,8 @@ protected:
 	static int KeyCode;
 
 	bool bIsRunning = true;
+
+	Uint64 LastTick;
+	Uint64 DeltaSeconds;
+
 };
