@@ -7,8 +7,8 @@ private:
 	MyEngine();
 
 public:
-
 	virtual ~MyEngine();
+
 
 	virtual void Initialize() override;
 	virtual void Terminalize() override;
@@ -19,12 +19,13 @@ public:
 		{
 			new MyEngine();
 		}
+
 		return Instance;
 	}
 
-protected:
+	//protected:
 	static MyEngine* Instance;
 };
 
-#define GEngine MyEngine::GetEngine()
+#define GEngine		MyEngine::GetEngine()
 //extern MyEngine* GEngine;

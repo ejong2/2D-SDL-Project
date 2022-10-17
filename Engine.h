@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "SDL.h"
+
+#pragma comment(lib, "SDL2main.lib")
+#pragma comment(lib, "SDL2.lib")
+
 
 using namespace std;
 
@@ -33,6 +38,12 @@ public:
 
 	vector<class AActor*>& GetAllActors();
 
+	void SDLInit();
+	void SDLTerm();
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
 
 protected:
 
