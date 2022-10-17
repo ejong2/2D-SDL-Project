@@ -63,3 +63,21 @@ void FWorld::Tick()
 		Value->Tick();
 	}
 }
+
+void FWorld::BeginPlay()
+{
+	for (auto Value : ActorList)
+	{
+		Value->BeginPlay();
+	}
+}
+
+void FWorld::EndPlay()
+{
+	for (auto Value : ActorList)
+	{
+		Value->EndPlay();
+	}
+}
+
+

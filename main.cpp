@@ -1,16 +1,17 @@
-#include <iostream>
-#include <fstream>
+
+
+#pragma comment(lib, "SDL2.dll")
+#pragma comment(lib, "SDL2.lib")
+
 #include "MyEngine.h"
 
-int main()
+int SDL_main(int argc, char* argv[])
 {
-	MyEngine* E = new MyEngine();
+	GEngine->Initialize();
 
-	E->Initialize();
+	GEngine->Run();
 
-	E->Run();
-
-	E->Terminalize();
+	GEngine->Terminalize();
 
 	return 0;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "Actor.h"
 
-
 class APlayer : public AActor
 {
 public:
@@ -10,5 +9,7 @@ public:
 
 	~APlayer();
 
-	void Input();
+	virtual void Tick() override;
+	bool PredictCanMove();
 };
+ 

@@ -16,4 +16,7 @@ public:
 
 	void Render();
 	void Tick();
-};
+
+	void BeginPlay();
+	void EndPlay();
+}; 

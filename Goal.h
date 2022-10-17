@@ -7,4 +7,6 @@ public:
 	AGoal();
 	AGoal(int NewX, int NewY);
 	~AGoal();
+
+	virtual void Tick();
 };

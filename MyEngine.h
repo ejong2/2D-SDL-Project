@@ -3,12 +3,28 @@
 
 class MyEngine : public Engine
 {
-public:
+private:
 	MyEngine();
-	virtual ~MyEngine();
 
+public:
+
+	virtual ~MyEngine();
 
 	virtual void Initialize() override;
 	virtual void Terminalize() override;
 
+	static inline MyEngine* GetEngine()
+	{
+		if (Instance == nullptr)
+		{
+			new MyEngine();
+		}
+		return Instance;
+	}
+
+protected:
+	static MyEngine* Instance;
 };
+
+#define GEngine MyEngine::GetEngine()
+//extern MyEngine* GEngine;

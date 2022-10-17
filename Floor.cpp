@@ -3,6 +3,7 @@
 AFloor::AFloor()
 {
 	Shape = ' ';
+	ZOrder = 10;
 }
 
 AFloor::AFloor(int NewX, int NewY)
