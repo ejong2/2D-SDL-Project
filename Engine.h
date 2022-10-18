@@ -50,13 +50,15 @@ public:
 		return DeltaSeconds;
 	}
 
+	void SpawnActor(AActor* NewActor);
+	void LoadLevel(string MapFilename);
+	void UnloadLevel();
+
 protected:
 
 	virtual void Input();
 	virtual void Tick();
 	virtual void Render();
-
-	void Load(string MapFilename);
 
 	void SortActor();
 

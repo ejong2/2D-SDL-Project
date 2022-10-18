@@ -2,6 +2,7 @@
 #include "MyEngine.h"
 #include "Player.h"
 #include <iostream>
+#include "Text.h"
 
 using namespace std;
 
@@ -12,6 +13,9 @@ AGoal::AGoal()
 	CollisionType = ECollisionType::QueryOnly;
     MyColor = { 255, 255, 0, 0 };
     LoadBMP("data/coin.bmp");
+    isComplete = false;
+    ElapsedTime = 0;
+    ExecuteTime = 3000;
 }
 
 AGoal::AGoal(int NewX, int NewY)
@@ -27,13 +31,29 @@ AGoal::~AGoal()
 
 void AGoal::Tick()
 {
-    for (AActor* Actor : GEngine->GetAllActors())
+    if (isComplete == false)
     {
-        if (X == Actor->X && Y == Actor->Y &&
-            dynamic_cast<APlayer*>(Actor))
+
+
+        for (AActor* Actor : GEngine->GetAllActors())
         {
-            cout << "Complete" << '\n';
-            GEngine->QuitGame();
+            if (X == Actor->X && Y == Actor->Y &&
+                dynamic_cast<APlayer*>(Actor))
+            {
+                GEngine->SpawnActor(new AText(200, 200, "Å¬¸®¾î!", 40));
+                //GEngine->QuitGame();
+                isComplete = true;
+                break;
+            }
+        }
+    }
+    else
+    {
+        ElapsedTime += GEngine->GetWorldDeltaSeconds();
+        if (ExecuteTime <= ElapsedTime)
+        {
+            GEngine->LoadLevel("Level2.txt");
+            //GEngine->QuitGame();
         }
     }
 }
