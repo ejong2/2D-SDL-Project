@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <iostream>
 #include "MyEngine.h"
+#include "Sound.h"
 
 using namespace std;
 
@@ -45,6 +46,8 @@ void APlayer::Tick()
 		return;
 	}
 
+	ASound* MoveSound = new ASound ("./data/move.wav", false);
+	GEngine->SpawnActor(new ASound("./data/move.wav", false));
 	switch (GEngine->MyEvent.key.keysym.sym)
 	{
 		case SDLK_w:

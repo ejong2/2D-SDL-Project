@@ -16,11 +16,11 @@ AText::AText(int NewX, int NewY, string NewContent, int NewFontSize)
     MyColor = { 255, 255, 255, 0 };
     ZOrder = 100;
 
+    Font = TTF_OpenFont("./Data/NGULIM.TTF", FontSize);
     wstring Unicode(NewContent.length(), 0);
     MultiByteToWideChar(CP_ACP, 0, Content.c_str(), Content.length(),
         (LPWSTR)Unicode.c_str(), Content.length() + 1);
 
-    Font = TTF_OpenFont("./Data/NGULIM.TTF", FontSize);
     //MySurface = TTF_RenderText_Solid(Font, Content.c_str(), MyColor);
     MySurface = TTF_RenderUNICODE_Solid(Font, (Uint16*)Unicode.c_str(), MyColor);
     MyTexture = SDL_CreateTextureFromSurface(GEngine->MyRenderer,

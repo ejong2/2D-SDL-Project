@@ -10,6 +10,7 @@
 #include "Goal.h"
 #include "Enemy.h"
 #include "Text.h"
+#include "Sound.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ Engine::Engine()
 
 	SDLInit();
 	TTF_Init();
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 }
 
 void Engine::SDLInit()
@@ -126,14 +128,16 @@ void Engine::LoadLevel(string MapFilename)
 	MapFile.close();
 
 	//MyWorld->SpawnActor(new AText(100, 100, "안녕", 30));
-
 	//Sort
 	SortActor();
+
+	SpawnActor(new ASound("./data/bgm.mp3", true));
 }
 
 void Engine::UnloadLevel()
 {
 	MyWorld->Terimante();
+	MyWorld->SpawnActor(new ASound());
 }
 
 void Engine::SortActor()

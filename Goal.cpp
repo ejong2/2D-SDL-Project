@@ -34,13 +34,13 @@ void AGoal::Tick()
     if (isComplete == false)
     {
 
-
         for (AActor* Actor : GEngine->GetAllActors())
         {
             if (X == Actor->X && Y == Actor->Y &&
                 dynamic_cast<APlayer*>(Actor))
             {
                 GEngine->SpawnActor(new AText(200, 200, "Å¬¸®¾î!", 40));
+
                 //GEngine->QuitGame();
                 isComplete = true;
                 break;

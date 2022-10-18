@@ -104,16 +104,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_ttf\include;$(SolutionDir)SDL2_mixer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)SDL2\lib\x64;$(SolutionDir)SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL2\lib\x64;$(SolutionDir)SDL2_ttf\lib\x64;$(SolutionDir)SDL2_mixer\lib\x64\optional;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)SDL2\lib\x64\sdl2.dll $(OutputPath)sdl2.dll /Y
-copy $(SolutionDir)SDL2_ttf\lib\x64\sdl2_ttf.dll $(OutputPath)sdl2_ttf.dll /Y</Command>
+copy $(SolutionDir)SDL2_ttf\lib\x64\sdl2_ttf.dll $(OutputPath)sdl2_ttf.dll /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,6 +142,7 @@ copy $(SolutionDir)SDL2_ttf\lib\x64\sdl2_ttf.dll $(OutputPath)sdl2_ttf.dll /Y</C
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyEngine.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
@@ -153,6 +155,7 @@ copy $(SolutionDir)SDL2_ttf\lib\x64\sdl2_ttf.dll $(OutputPath)sdl2_ttf.dll /Y</C
     <ClInclude Include="Goal.h" />
     <ClInclude Include="MyEngine.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="World.h" />
